@@ -1753,10 +1753,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
-"@reduxjs/toolkit@^1.8.5":
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-1.9.2.tgz#4cd153491118038e2eebcb63b2264e42a8a2d74c"
-  integrity sha512-5ZAZ7hwAKWSii5T6NTPmgIBUqyVdlDs+6JjThz6J6dmHLDm6zCzv2OjHIFAi3Vvs1qjmXU0bm6eBojukYXjVMQ==
+"@reduxjs/toolkit@^1.9.3":
+  version "1.9.3"
+  resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-1.9.3.tgz#27e1a33072b5a312e4f7fa19247fec160bbb2df9"
+  integrity sha512-GU2TNBQVofL09VGmuSioNPQIu6Ml0YLf4EJhgj0AvBadRlCGzUWet8372LjvO4fqKZF2vH1xU0htAa7BrK9pZg==
   dependencies:
     immer "^9.0.16"
     redux "^4.2.0"
@@ -3282,6 +3282,11 @@ cliui@^7.0.2:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     wrap-ansi "^7.0.0"
+
+clsx@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
+  integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
 
 co@^4.6.0:
   version "4.6.0"
@@ -7860,6 +7865,13 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-toastify@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-9.1.1.tgz#9280caea4a13dc1739c350d90660a630807bf10b"
+  integrity sha512-pkFCla1z3ve045qvjEmn2xOJOy4ZciwRXm1oMPULVkELi5aJdHCN/FHnuqXq8IwGDLB7PPk2/J6uP9D8ejuiRw==
+  dependencies:
+    clsx "^1.1.1"
 
 react-transition-group@^4.4.2:
   version "4.4.5"
