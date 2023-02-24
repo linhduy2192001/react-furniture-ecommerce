@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { useParams } from "react-router-dom";
-import products from "../assets/data/products";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
 import "../styles/product-details.css";
@@ -10,8 +9,12 @@ import ProductsList from "../components/UI/ProductsList";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../redux/slices/cartSlice";
 import { toast } from "react-toastify";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase.config";
+import useGetData from "../custom-hooks/useGetData";
 
 export default function ProductDetails() {
+  const [product, setProduct] = useState({});
   const [tab, setTab] = useState("desc");
   const reviewUser = useRef("");
   const reviewMsg = useRef("");
@@ -19,15 +22,30 @@ export default function ProductDetails() {
 
   const [rating, setRating] = useState(null);
   const { id } = useParams();
-  const product = products.find((item) => item.id === id);
+
+  const { data: products } = useGetData("products");
+  // const product = products.find((item) => item.id === id);
+  const docRef = doc(db, "products", id);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setProduct(docSnap.data());
+      } else {
+        console.log("no product");
+      }
+    };
+    getProduct();
+  }, []);
   const {
     imgUrl,
     category,
     productName,
     price,
-    avgRating,
+    // avgRating,
     shortDesc,
-    reviews,
+    // reviews,
     description,
   } = product;
 
@@ -89,10 +107,7 @@ export default function ProductDetails() {
                       <i class="ri-star-half-line"></i>
                     </span>
                   </div>
-                  <p>
-                    {" "}
-                    <span>({avgRating} ratings) </span>
-                  </p>
+                  <p> {/* <span>({avgRating} ratings) </span> */}</p>
                 </div>
                 <div className="d-flex align-items-center gap-5">
                   <span className="product__price">${price} </span>
@@ -127,7 +142,7 @@ export default function ProductDetails() {
                   className={`${tab === "rev " ? "active__tab" : ""}`}
                   onClick={() => setTab("rev")}
                 >
-                  Reviews ({reviews.length})
+                  {/* Reviews ({reviews.length}) */}
                 </h6>
               </div>
               {tab === "desc" ? (
@@ -137,14 +152,14 @@ export default function ProductDetails() {
               ) : (
                 <div className="product__review mt-5">
                   <div className="review__wrapper">
-                    <ul>
+                    {/* <ul>
                       {reviews?.map((item, index) => (
                         <li key={index} className="mb-4">
                           <span>{item.rating} (average rating)</span>
                           <p>{item.text}</p>
                         </li>
                       ))}
-                    </ul>
+                    </ul> */}
                     <div className="review__form">
                       <h4>Leave your experience</h4>
                       <form action="" onSubmit={submitHandler}>
